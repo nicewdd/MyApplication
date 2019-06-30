@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
+    private final String TAG = "MyApplication";
     private Button btn1;
     private TextView tv;
     private EditText phoneNum;
@@ -35,11 +37,13 @@ public class MainActivity extends AppCompatActivity {
                 if(isChecked){
                     agree = true;
                     switch1.setText("agree");
+                    Log.d(TAG,"You agree the information gathering.");
                 }
                 else{
                     agree = false;
                     switch1.setText("disagree");
                     tv.setText("Information gathering");
+                    Log.d(TAG,"You don't agree the information gathering.");
                 }
             }
         });
@@ -53,9 +57,11 @@ public class MainActivity extends AppCompatActivity {
                 if(agree){
                     if(rdBtn.getText().equals("male")){
                         tv.setText("Hello,sir." + "Your phone number is:" + phoneNum.getText());
+                        Log.d(TAG,"You have submitted your information.");
                     }
                     else{
                         tv.setText("Hello,madam." + "Your phone number is:" + phoneNum.getText());
+                        Log.d(TAG,"You have submitted your information.");
                     }
                 }
                else{
